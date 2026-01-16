@@ -1,0 +1,57 @@
+{
+  "name": "react-query-key-factory",
+  "version": "1.0.0",
+  "description": "A type-safe key factory for managing react-query keys",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "prepublishOnly": "yarn build && yarn test",
+    "publish": "npm publish",
+    "publish:dry-run": "npm publish --dry-run",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "type-check": "tsc --noEmit",
+    "check": "yarn type-check && yarn lint",
+    "docs:dev": "cd starlight-docs && yarn dev",
+    "docs:build": "cd starlight-docs && yarn build",
+    "docs:preview": "cd starlight-docs && yarn preview"
+  },
+  "keywords": [
+    "react-query",
+    "query-keys",
+    "typescript",
+    "type-safe"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bhaskar20/awesome-key-factory.git"
+  },
+  "homepage": "https://github.com/bhaskar20/awesome-key-factory#readme",
+  "bugs": {
+    "url": "https://github.com/bhaskar20/awesome-key-factory/issues"
+  },
+  "devDependencies": {
+    "@astrojs/starlight": "^0.37.3",
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.53.0",
+    "@typescript-eslint/parser": "^8.53.0",
+    "astro": "^5.16.10",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.53.0"
+  },
+  "peerDependencies": {
+    "typescript": "^4.0.0 || ^5.0.0"
+  },
+  "files": [
+    "dist"
+  ]
+}

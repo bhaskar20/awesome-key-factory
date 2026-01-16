@@ -1,0 +1,79 @@
+# Source files
+src/
+*.ts
+!*.d.ts
+
+# Test files
+*.test.ts
+*.spec.ts
+__tests__/
+tests/
+
+# Development files
+.storybook/
+.stories/
+*.stories.ts
+*.stories.tsx
+
+# Documentation
+docs/
+starlight-docs/
+*.md
+!README.md
+DOCUMENTATION.md
+GITHUB_PAGES_SETUP.md
+LINTING.md
+QUICK_START_GITHUB_PAGES.md
+
+# Configuration files
+tsconfig.json
+tsconfig.eslint.json
+jest.config.js
+eslint.config.js
+.eslintrc*
+.prettierrc*
+.prettierignore
+
+# Build tools
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+.circleci/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary
+*.tmp
+.cache/
+.temp/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Lock files (keep yarn.lock for development, but don't publish)
+yarn.lock
+package-lock.json
+pnpm-lock.yaml

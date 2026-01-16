@@ -1,0 +1,69 @@
+---
+title: createKeyFactory
+description: Complete API reference for createKeyFactory.
+---
+
+## Function Signature
+
+```typescript
+function createKeyFactory<BaseKey, Schema>(
+  baseKey: BaseKey,
+  schema: Schema
+): KeyFactory<Schema, BaseKey>
+```
+
+## Parameters
+
+### `baseKey`
+
+- **Type**: `BaseKey extends string`
+- **Required**: Yes
+- **Description**: The base key that will be prepended to all generated keys
+
+### `schema`
+
+- **Type**: `Schema extends Record<string, any>`
+- **Required**: Yes
+- **Description**: An object defining the key structure with nested objects and functions
+
+## Returns
+
+A factory object (`KeyFactory<Schema, BaseKey>`) where:
+
+- Each leaf node (function or array) can be called to generate a key
+- Each intermediate node can be called to get its path
+- Nested keys can be accessed both through the full path and directly
+
+## Type Parameters
+
+- **`BaseKey`**: The type of the base key string
+- **`Schema`**: The type of the schema object
+
+## Examples
+
+### Basic Usage
+
+```typescript
+const keys = createKeyFactory('app', {
+  users: {
+    all: () => [],
+    detail: (params: { id: string }) => [params.id],
+  },
+});
+```
+
+### With Type Inference
+
+TypeScript automatically infers all types:
+
+```typescript
+const keys = createKeyFactory('app', {
+  users: {
+    detail: (params: { id: string }) => [params.id],
+  },
+});
+
+// TypeScript knows the exact shape
+keys.users.detail({ id: '123' }); // ✅ Type-safe
+keys.users.detail({ id: 123 }); // ❌ Type error: id must be string
+```
