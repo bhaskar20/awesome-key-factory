@@ -3,7 +3,6 @@ layout: home
 
 hero:
   name: Awesome key factory
-  text: Type-safe key factory
   tagline: A type-safe key factory for managing react-query keys with full TypeScript support.
   actions:
     - theme: brand

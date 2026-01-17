@@ -18,6 +18,8 @@ tests/
 # Documentation
 docs/
 starlight-docs/
+vitepress-docs/
+docusaurus-docs/
 *.md
 !README.md
 DOCUMENTATION.md

@@ -194,6 +194,170 @@ describe("createKeyFactory", () => {
 
       expect(keys.items()).toEqual(["base", "items"]);
     });
+
+    it("should handle array shorthand in nested structures", () => {
+      const keys = createKeyFactory("app", {
+        users: {
+          list: ["all"],
+        },
+      });
+
+      expect(keys.users.list()).toEqual(["app", "users", "list", "all"]);
+    });
+
+    it("should handle array shorthand with numeric string values", () => {
+      const keys = createKeyFactory("base", {
+        items: ["1", "2", "3"],
+      });
+
+      expect(keys.items()).toEqual(["base", "items", "1", "2", "3"]);
+    });
+
+    it("should handle array shorthand in deeply nested structures", () => {
+      const keys = createKeyFactory("api", {
+        v1: {
+          users: {
+            posts: {
+              comments: ["all"],
+            },
+          },
+        },
+      });
+
+      expect(keys.v1.users.posts.comments()).toEqual([
+        "api",
+        "v1",
+        "users",
+        "posts",
+        "comments",
+        "all",
+      ]);
+      expect(keys.v1.users.posts()).toEqual(["api", "v1", "users", "posts"]);
+      expect(keys.v1.users()).toEqual(["api", "v1", "users"]);
+      expect(keys.v1()).toEqual(["api", "v1"]);
+    });
+
+    it("should handle array shorthand with special characters in array values", () => {
+      const keys = createKeyFactory("base", {
+        items: ["key-1", "key_2", "key.3"],
+      });
+
+      expect(keys.items()).toEqual(["base", "items", "key-1", "key_2", "key.3"]);
+    });
+
+    it("should handle multiple array shorthand keys at the same level", () => {
+      const keys = createKeyFactory("base", {
+        a: ["1"],
+        b: ["2"],
+        c: ["3"],
+      });
+
+      expect(keys.a()).toEqual(["base", "a", "1"]);
+      expect(keys.b()).toEqual(["base", "b", "2"]);
+      expect(keys.c()).toEqual(["base", "c", "3"]);
+    });
+
+    it("should handle array shorthand with bracket notation access", () => {
+      const keys = createKeyFactory("base", {
+        "key-1": ["value1"],
+        "key_2": ["value2"],
+      });
+
+      expect(keys["key-1"]()).toEqual(["base", "key-1", "value1"]);
+      expect(keys["key_2"]()).toEqual(["base", "key_2", "value2"]);
+    });
+
+    it("should handle array shorthand with long arrays", () => {
+      const keys = createKeyFactory("base", {
+        items: ["a", "b", "c", "d", "e", "f", "g"],
+      });
+
+      expect(keys.items()).toEqual([
+        "base",
+        "items",
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+      ]);
+    });
+
+    it("should handle array shorthand with single character values", () => {
+      const keys = createKeyFactory("base", {
+        items: ["x", "y", "z"],
+      });
+
+      expect(keys.items()).toEqual(["base", "items", "x", "y", "z"]);
+    });
+
+    it("should handle array shorthand with empty string values", () => {
+      const keys = createKeyFactory("base", {
+        items: ["", "value"],
+      });
+
+      expect(keys.items()).toEqual(["base", "items", "", "value"]);
+    });
+
+    it("should handle array shorthand at root level with nested objects", () => {
+      const keys = createKeyFactory("app", {
+        root: ["level"],
+        nested: {
+          deep: ["value"],
+        },
+      });
+
+      expect(keys.root()).toEqual(["app", "root", "level"]);
+      expect(keys.nested.deep()).toEqual(["app", "nested", "deep", "value"]);
+      expect(keys.nested()).toEqual(["app", "nested"]);
+    });
+
+    it("should handle array shorthand with params parameter (should be optional)", () => {
+      const keys = createKeyFactory("base", {
+        items: ["list"],
+      });
+
+      // Array shorthand should accept optional params
+      expect(keys.items()).toEqual(["base", "items", "list"]);
+      expect(keys.items({})).toEqual(["base", "items", "list"]);
+    });
+
+    it("should handle array shorthand in multiple nested levels", () => {
+      const keys = createKeyFactory("shop", {
+        products: {
+          list: ["all"],
+          featured: ["featured"],
+          categories: {
+            electronics: ["items"],
+          },
+        },
+        cart: ["items"],
+      });
+
+      expect(keys.products.list()).toEqual(["shop", "products", "list", "all"]);
+      expect(keys.products.featured()).toEqual([
+        "shop",
+        "products",
+        "featured",
+        "featured",
+      ]);
+      expect(keys.products.categories.electronics()).toEqual([
+        "shop",
+        "products",
+        "categories",
+        "electronics",
+        "items",
+      ]);
+      expect(keys.cart()).toEqual(["shop", "cart", "items"]);
+      expect(keys.products.categories()).toEqual([
+        "shop",
+        "products",
+        "categories",
+      ]);
+      expect(keys.products()).toEqual(["shop", "products"]);
+    });
   });
 
   describe("complex real-world scenarios", () => {
