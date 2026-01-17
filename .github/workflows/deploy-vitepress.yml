@@ -33,6 +33,9 @@ jobs:
           node-version: 20
           cache: 'yarn'
 
+      - name: Setup Yarn
+        run: corepack enable
+
       - name: Install dependencies
         run: |
           cd vitepress-docs

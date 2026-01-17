@@ -29,8 +29,8 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install yarn
-        run: corepack enable && corepack prepare yarn@stable --activate
+      - name: Setup Yarn
+        run: corepack enable
 
       - name: Install dependencies
         run: yarn install --immutable
