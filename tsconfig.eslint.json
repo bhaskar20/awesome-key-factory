@@ -1,5 +1,14 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/**/*", "**/*.js", "**/*.mjs"],
-  "exclude": ["node_modules", "dist", "coverage", "starlight-docs"]
+  "compilerOptions": {
+    "rootDir": "."
+  },
+  "include": [
+    "src/**/*",
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage",
+  ]
 }

@@ -80,3 +80,131 @@ queryClient.invalidateQueries({
   queryKey: queryKeys.posts(),
 });
 ```
+
+## Merging Factories
+
+Combine multiple factories into a single factory for better organization:
+
+### Basic Merging
+
+Merge factories with different top-level keys:
+
+```typescript
+import { createKeyFactory, mergeFactories } from 'awesome-key-factory';
+
+const usersKeys = createKeyFactory('app', {
+  users: {
+    all: () => [],
+    detail: (params: { id: string }) => [params.id],
+  },
+});
+
+const postsKeys = createKeyFactory('app', {
+  posts: {
+    all: () => [],
+    detail: (params: { id: string }) => [params.id],
+  },
+});
+
+const queryKeys = mergeFactories('app', [usersKeys, postsKeys]);
+
+// Access keys from both factories
+queryKeys.users.all({}); // => ['app', 'users', 'all']
+queryKeys.posts.detail({ id: '123' }); // => ['app', 'posts', 'detail', '123']
+```
+
+### Modular Organization
+
+Organize keys by feature or module and merge them:
+
+```typescript
+// features/users/keys.ts
+export const usersKeys = createKeyFactory('app', {
+  users: {
+    all: () => [],
+    detail: (params: { id: string }) => [params.id],
+    posts: (params: { userId: string }) => [params.userId, 'posts'],
+  },
+});
+
+// features/posts/keys.ts
+export const postsKeys = createKeyFactory('app', {
+  posts: {
+    all: () => [],
+    detail: (params: { id: string }) => [params.id],
+    comments: (params: { postId: string }) => [params.postId, 'comments'],
+  },
+});
+
+// features/comments/keys.ts
+export const commentsKeys = createKeyFactory('app', {
+  comments: {
+    all: () => [],
+    detail: (params: { id: string }) => [params.id],
+  },
+});
+
+// keys/index.ts
+import { mergeFactories } from 'awesome-key-factory';
+import { usersKeys } from '../features/users/keys';
+import { postsKeys } from '../features/posts/keys';
+import { commentsKeys } from '../features/comments/keys';
+
+export const queryKeys = mergeFactories('app', [
+  usersKeys,
+  postsKeys,
+  commentsKeys,
+]);
+```
+
+### Merging Nested Structures
+
+Merge factories with nested schemas:
+
+```typescript
+const apiV1Keys = createKeyFactory('api', {
+  v1: {
+    users: {
+      all: () => [],
+    },
+  },
+});
+
+const apiV2Keys = createKeyFactory('api', {
+  v2: {
+    users: {
+      all: () => [],
+    },
+  },
+});
+
+const merged = mergeFactories('api', [apiV1Keys, apiV2Keys]);
+
+merged.v1.users.all({}); // => ['api', 'v1', 'users', 'all']
+merged.v2.users.all({}); // => ['api', 'v2', 'users', 'all']
+```
+
+### Conflict Prevention
+
+The merge function automatically detects conflicts and throws an error:
+
+```typescript
+// ❌ This will throw an error - both factories define users.all
+const keys1 = createKeyFactory('app', {
+  users: {
+    all: () => [],
+  },
+});
+
+const keys2 = createKeyFactory('app', {
+  users: {
+    all: () => [],
+  },
+});
+
+mergeFactories('app', [keys1, keys2]);
+// Error: Factory merge conflict detected. The following keys are defined in multiple factories:
+//   - Path "users.all" is defined in factories at indices: 0, 1
+```
+
+**Note**: All factories must have unique keys at all levels. Nested objects can be merged if they don't have conflicting keys at deeper levels.

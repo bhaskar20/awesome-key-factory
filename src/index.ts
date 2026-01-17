@@ -88,7 +88,7 @@ type BracketAccess<
 /**
  * Recursive type to transform the input schema into the output factory type
  */
-type KeyFactory<
+export type KeyFactory<
   T,
   BaseKey extends string,
   Path extends readonly string[] = []
@@ -113,12 +113,20 @@ type KeyFactory<
   // This allows keys["key-1"] to have the correct type
   [K in StringKeys<T>]: GetKeyFunction<T, K, BaseKey, Path>;
 } & {
+  // Type-level marker for schema extraction (doesn't affect runtime)
+  // Using a symbol to avoid conflicts with the string index signature
+  readonly [__schemaTypeMarker]: T;
+} & {
   // Allow access to any nested key (for runtime support of direct access)
   // This is needed for nested keys that can be accessed directly
   // For bracket notation with known keys, the mapped type above takes precedence
   // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
   [key: string]: BracketAccess<T, BaseKey, Path> | any;
 };
+
+// Symbol for type-level schema marker (not used at runtime)
+// This symbol is used only for type-level extraction and doesn't exist at runtime
+export declare const __schemaTypeMarker: unique symbol;
 
 /**
  * Creates a type-safe key factory for react-query keys
@@ -161,7 +169,9 @@ export function createKeyFactory<
       if (typeof value === "function") {
         // It's a function that returns keys
         factory[key] = (params?: any) => {
-          const keys = value(params);
+          // Type guard: value is a function, so it's safe to call
+          const func = value as (...args: any[]) => any[];
+          const keys = func(params);
           return [...currentPath, currentBaseKey, key, ...keys];
         };
       } else if (
@@ -194,8 +204,9 @@ export function createKeyFactory<
     // Make the factory callable
     return new Proxy(factory, {
       get(target, prop) {
-        if (prop === "__call") {
-          return target.__call;
+        // Allow access to internal metadata
+        if (prop === "__call" || prop === "__schema" || prop === "__baseKey") {
+          return target[prop as string];
         }
         if (prop in target) {
           return target[prop as string];
@@ -207,10 +218,24 @@ export function createKeyFactory<
         );
       },
       apply(target, _thisArg, _argumentsList) {
-        return target.__call();
+        // Type guard: __call is always a function that returns string[]
+        const callFn = target.__call as () => string[];
+        return callFn();
       },
     });
   }
 
-  return createFactory(schema, baseKey) as KeyFactory<Schema, BaseKey>;
+  const factory = createFactory(schema, baseKey);
+  
+  // Store metadata for merging on the factory object
+  const factoryAny: any = factory;
+  factoryAny.__schema = schema;
+  factoryAny.__baseKey = baseKey;
+  // Add explicit schema type marker for easier type extraction in mergeFactories
+  factoryAny.__$schema = schema;
+
+  return factory as KeyFactory<Schema, BaseKey>;
 }
+
+// Re-export merge functionality
+export { mergeFactories, type FactoryConfig } from "./merge";
