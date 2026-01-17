@@ -43,6 +43,8 @@ yarn add awesome-key-factory
 npm install awesome-key-factory
 ```
 
+📦 **[View package on npm](https://www.npmjs.com/package/awesome-key-factory)**
+
 ### Peer Dependencies
 
 This library requires TypeScript version 4.0.0 or higher.

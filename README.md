@@ -9,11 +9,15 @@ A type-safe key factory for managing react-query keys with full TypeScript suppo
 
 ## Installation
 
+Install from npm:
+
 ```bash
 yarn add awesome-key-factory
 # or
 npm install awesome-key-factory
 ```
+
+📦 **[View on npm](https://www.npmjs.com/package/awesome-key-factory)**
 
 ## Usage
 

@@ -14,6 +14,10 @@ hero:
     - theme: alt
       text: Examples
       link: /examples/react-query-setup
+    - theme: alt
+      text: View on npm
+      link: https://www.npmjs.com/package/awesome-key-factory
+      target: _blank
 
 features:
   - icon: 🔒
