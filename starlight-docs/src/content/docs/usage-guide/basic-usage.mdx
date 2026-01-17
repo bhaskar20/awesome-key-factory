@@ -40,24 +40,6 @@ const keys = createKeyFactory('shop', {
   },
 });
 
-keys.products.list({}) // => ['shop', 'products', 'list', 'all']
-keys.products.featured({}) // => ['shop', 'products', 'featured', 'featured', 'items']
-```
-
-## Direct Access to Nested Keys
-
-One powerful feature is that nested keys can be accessed directly:
-
-```typescript
-const keys = createKeyFactory('app', {
-  users: {
-    posts: {
-      comments: ['all'],
-    },
-  },
-});
-
-// Both of these work:
-keys.users.posts.comments({}) // => ['app', 'users', 'posts', 'comments', 'all']
-keys.comments({}) // => ['app', 'users', 'posts', 'comments', 'all'] (direct access)
+keys.products.list() // => ['shop', 'products', 'list', 'all']
+keys.products.featured() // => ['shop', 'products', 'featured', 'featured', 'items']
 ```

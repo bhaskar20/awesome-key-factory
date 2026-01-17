@@ -54,7 +54,7 @@ When migrating from v1 to v2:
 ```typescript
 // Invalidate v1 queries
 queryClient.invalidateQueries({
-  queryKey: queryKeys.v1({}),
+  queryKey: queryKeys.v1(),
 });
 
 // Use v2 for new queries

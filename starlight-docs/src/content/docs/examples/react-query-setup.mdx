@@ -76,7 +76,7 @@ function useCreatePost() {
 ```typescript
 // Invalidate all user queries
 queryClient.invalidateQueries({
-  queryKey: queryKeys.users({}),
+  queryKey: queryKeys.users(),
 });
 
 // Invalidate specific user detail

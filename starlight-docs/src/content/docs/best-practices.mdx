@@ -91,12 +91,12 @@ Use intermediate levels for query invalidation:
 ```typescript
 // Invalidate all user-related queries
 queryClient.invalidateQueries({
-  queryKey: queryKeys.users({}),
+  queryKey: queryKeys.users(),
 });
 
 // Invalidate all post-related queries
 queryClient.invalidateQueries({
-  queryKey: queryKeys.posts({}),
+  queryKey: queryKeys.posts(),
 });
 ```
 

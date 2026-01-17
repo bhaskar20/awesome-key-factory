@@ -20,7 +20,6 @@ Your Starlight documentation site has been successfully set up and configured.
 ### ✅ Deployment Ready
 - Netlify configuration (`netlify.toml`)
 - Vercel configuration (`vercel.json`)
-- GitHub Actions workflow (`.github/workflows/deploy.yml`)
 - Deployment guide (`DEPLOYMENT.md`)
 
 ### ✅ Build Verified
@@ -57,10 +56,6 @@ Choose your deployment platform:
 - Connect repository
 - Build settings are auto-configured
 
-**GitHub Pages:**
-- Enable Pages in repository settings
-- GitHub Actions will auto-deploy on push
-
 See `DEPLOYMENT.md` for detailed instructions.
 
 ### 4. Customize (Optional)
@@ -82,10 +77,7 @@ starlight-docs/
 ├── astro.config.mjs       # Main configuration
 ├── package.json           # Dependencies
 ├── netlify.toml           # Netlify config
-├── vercel.json            # Vercel config
-└── .github/
-    └── workflows/
-        └── deploy.yml     # GitHub Actions
+└── vercel.json            # Vercel config
 ```
 
 ## Commands

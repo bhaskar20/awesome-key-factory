@@ -60,7 +60,6 @@ The following are excluded from linting:
 - `node_modules/` - Dependencies
 - `coverage/` - Test coverage
 - `starlight-docs/` - Documentation site
-- `docs/` - HTML documentation
 - Config files (`*.config.js`, `*.config.mjs`)
 
 ## CI/CD Integration

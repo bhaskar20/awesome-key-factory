@@ -10,7 +10,6 @@ export default tseslint.config(
       '*.config.js',
       '*.config.mjs',
       'starlight-docs/',
-      'docs/',
       '.yarn/',
       '**/*.js',
       'eslint.config.js',

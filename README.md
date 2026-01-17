@@ -6,34 +6,6 @@ A type-safe key factory for managing react-query keys with full TypeScript suppo
 
 - **[Starlight Documentation Site](./starlight-docs/)** - Beautiful, interactive documentation built with [Starlight](https://starlight.astro.build/) (recommended)
 - **[Full Documentation](./DOCUMENTATION.md)** - Complete guide with all features and examples
-- **[HTML Documentation Site](./docs/)** - Interactive HTML documentation site (open `docs/index.html` in your browser)
-
-### Running the Starlight Docs
-
-```bash
-# Development server
-yarn docs:dev
-
-# Build for production
-yarn docs:build
-
-# Preview production build
-yarn docs:preview
-```
-
-### Deploying to GitHub Pages
-
-The documentation is configured for automatic deployment to GitHub Pages:
-
-1. **Push to GitHub**: Push your repository to GitHub
-2. **Enable GitHub Pages**: 
-   - Go to repository Settings → Pages
-   - Set source to **GitHub Actions**
-3. **Automatic Deployment**: The workflow will automatically deploy on push to `main`/`master`
-
-See [GITHUB_PAGES_SETUP.md](./GITHUB_PAGES_SETUP.md) for detailed instructions.
-
-Your docs will be available at: `https://YOUR_USERNAME.github.io/react-query-key-factory/`
 
 ## Installation
 
@@ -57,10 +29,9 @@ const keys = createKeyFactory('baseKey', {
   },
 });
 
-// Direct access to any level
+// Access any level
 keys.a({}) // => ['baseKey', 'a', 'key1', 'key2']
-keys.b.c({}) // => ['baseKey', 'b', 'c', 'key3', 'key4']
-keys.c({}) // => ['baseKey', 'b', 'c', 'key3', 'key4'] (nested keys accessible directly)
+keys.b.c() // => ['baseKey', 'b', 'c', 'key3', 'key4']
 keys.b() // => ['baseKey', 'b'] (any level can be called as a function)
 ```
 
@@ -103,7 +74,7 @@ const keys = createKeyFactory('shop', {
   },
 });
 
-keys.products.list({}) // => ['shop', 'products', 'list', 'all']
+keys.products.list() // => ['shop', 'products', 'list', 'all']
 ```
 
 ### Deep Nesting
@@ -130,7 +101,7 @@ keys.v1() // => ['api', 'v1']
 ## Features
 
 - ✅ **Fully TypeScript typed** - Get autocomplete and type safety for all your keys
-- ✅ **Nested key access** - Access nested keys both through the path (`keys.b.c`) and directly (`keys.c`)
+- ✅ **Nested key access** - Access nested keys through the full path (`keys.b.c`)
 - ✅ **Function parameters** - Pass typed parameters to your key functions
 - ✅ **Array shorthand** - Use arrays for static key lists
 - ✅ **Any level access** - Call any level in the hierarchy as a function to get its path
@@ -153,16 +124,6 @@ For complete documentation, examples, and best practices, see:
 
 - **[Starlight Documentation](./starlight-docs/)** - Beautiful, modern documentation site with search, dark mode, and more
 - **[DOCUMENTATION.md](./DOCUMENTATION.md)** - Comprehensive markdown documentation
-- **[HTML Documentation Site](./docs/)** - Interactive HTML documentation site
-
-### Quick Start with Starlight Docs
-
-```bash
-# Start the development server
-yarn docs:dev
-
-# The site will be available at http://localhost:4321
-```
 
 ## License
 

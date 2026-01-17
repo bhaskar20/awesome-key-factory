@@ -81,7 +81,6 @@ The built site in `dist/` can be deployed to:
 
 - **Netlify**: Already configured with `netlify.toml` - just connect your repository
 - **Vercel**: Already configured with `vercel.json` - just connect your repository
-- **GitHub Pages**: Already configured with GitHub Actions workflow - enable Pages in settings
 - **Cloudflare Pages**: Connect repository and set build directory to `starlight-docs`
 - **Any static host**: Upload the `dist/` folder
 

@@ -55,24 +55,6 @@ This guide explains how to deploy your Starlight documentation site to various p
 3. **Via `vercel.json`:**
    The `vercel.json` file is already configured. Just connect your repository to Vercel.
 
-### GitHub Pages
-
-1. **Enable GitHub Pages:**
-   - Go to your repository Settings > Pages
-   - Set source to "GitHub Actions"
-
-2. **Automatic Deployment:**
-   - The `.github/workflows/deploy.yml` file is already configured
-   - Push to `main` or `master` branch
-   - GitHub Actions will automatically build and deploy
-
-3. **Manual Deployment:**
-   ```bash
-   cd starlight-docs
-   yarn build
-   # Then upload the dist/ folder to GitHub Pages
-   ```
-
 ### Cloudflare Pages
 
 1. Go to [Cloudflare Dashboard](https://dash.cloudflare.com/)
@@ -110,11 +92,6 @@ This guide explains how to deploy your Starlight documentation site to various p
 2. Add your custom domain
 3. Configure DNS as instructed
 
-### GitHub Pages
-1. Go to repository Settings > Pages
-2. Add your custom domain in the "Custom domain" field
-3. Configure DNS with your domain provider
-
 ## Environment Variables
 
 If you need environment variables:
@@ -129,7 +106,6 @@ All platforms support automatic deployments when you push to your repository:
 
 - **Netlify**: Automatic on push to connected branch
 - **Vercel**: Automatic on push to main branch
-- **GitHub Pages**: Uses GitHub Actions workflow (already configured)
 
 ## Troubleshooting
 

@@ -41,10 +41,10 @@ const keys = createKeyFactory('shop', {
   cart: ['items'], // Array shorthand
 });
 
-keys.products.list({}) // => ['shop', 'products', 'list', 'all']
+keys.products.list() // => ['shop', 'products', 'list', 'all']
 keys.products.byCategory({ category: 'electronics' })
 // => ['shop', 'products', 'byCategory', 'electronics']
-keys.cart({}) // => ['shop', 'cart', 'items']
+keys.cart() // => ['shop', 'cart', 'items']
 ```
 
 ## Optional Parameters
@@ -72,11 +72,11 @@ Use intermediate levels for efficient query invalidation:
 ```typescript
 // Invalidate all user-related queries
 queryClient.invalidateQueries({
-  queryKey: queryKeys.users({}),
+  queryKey: queryKeys.users(),
 });
 
 // Invalidate all post-related queries
 queryClient.invalidateQueries({
-  queryKey: queryKeys.posts({}),
+  queryKey: queryKeys.posts(),
 });
 ```

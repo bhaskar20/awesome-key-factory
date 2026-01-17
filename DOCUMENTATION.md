@@ -144,8 +144,8 @@ const keys = createKeyFactory('shop', {
   },
 });
 
-keys.products.list({}) // => ['shop', 'products', 'list', 'all']
-keys.products.featured({}) // => ['shop', 'products', 'featured', 'featured', 'items']
+keys.products.list() // => ['shop', 'products', 'list', 'all']
+keys.products.featured() // => ['shop', 'products', 'featured', 'featured', 'items']
 ```
 
 ### Advanced Patterns
@@ -184,28 +184,10 @@ const keys = createKeyFactory('shop', {
   cart: ['items'], // Array shorthand
 });
 
-keys.products.list({}) // => ['shop', 'products', 'list', 'all']
+keys.products.list() // => ['shop', 'products', 'list', 'all']
 keys.products.byCategory({ category: 'electronics' })
 // => ['shop', 'products', 'byCategory', 'electronics']
-keys.cart({}) // => ['shop', 'cart', 'items']
-```
-
-#### Direct Access to Nested Keys
-
-One powerful feature is that nested keys can be accessed directly:
-
-```typescript
-const keys = createKeyFactory('app', {
-  users: {
-    posts: {
-      comments: ['all'],
-    },
-  },
-});
-
-// Both of these work:
-keys.users.posts.comments({}) // => ['app', 'users', 'posts', 'comments', 'all']
-keys.comments({}) // => ['app', 'users', 'posts', 'comments', 'all'] (direct access)
+keys.cart() // => ['shop', 'cart', 'items']
 ```
 
 ---
@@ -226,7 +208,6 @@ Creates a type-safe key factory for React Query keys.
 A factory object (`KeyFactory<Schema, BaseKey>`) where:
 - Each leaf node (function or array) can be called to generate a key
 - Each intermediate node can be called to get its path
-- Nested keys can be accessed both through the full path and directly
 
 #### Type Parameters
 
@@ -497,12 +478,12 @@ Use intermediate levels for query invalidation:
 ```typescript
 // Invalidate all user-related queries
 queryClient.invalidateQueries({
-  queryKey: queryKeys.users({}),
+  queryKey: queryKeys.users(),
 });
 
 // Invalidate all post-related queries
 queryClient.invalidateQueries({
-  queryKey: queryKeys.posts({}),
+  queryKey: queryKeys.posts(),
 });
 ```
 
