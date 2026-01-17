@@ -7,8 +7,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "prepublishOnly": "yarn build && yarn test",
-    "prepack": "yarn build",
+    "prepublishOnly": "yarn test",
     "publish": "npm publish",
     "publish:dry-run": "npm publish --dry-run",
     "publish:public": "npm publish --access public",
