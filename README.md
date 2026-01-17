@@ -4,7 +4,7 @@ A type-safe key factory for managing react-query keys with full TypeScript suppo
 
 ## 📚 Documentation
 
-- **[Starlight Documentation Site](./starlight-docs/)** - Beautiful, interactive documentation built with [Starlight](https://starlight.astro.build/) (recommended)
+- **[Documentation Site](https://bhaskar20.github.io/awesome-key-factory/)** - Beautiful, interactive documentation built with VitePress (recommended)
 - **[Full Documentation](./DOCUMENTATION.md)** - Complete guide with all features and examples
 
 ## Installation
@@ -122,7 +122,7 @@ Creates a type-safe key factory.
 
 For complete documentation, examples, and best practices, see:
 
-- **[Starlight Documentation](./starlight-docs/)** - Beautiful, modern documentation site with search, dark mode, and more
+- **[Documentation](https://bhaskar20.github.io/awesome-key-factory/)** - Beautiful, modern documentation site with search, dark mode, and more
 - **[DOCUMENTATION.md](./DOCUMENTATION.md)** - Comprehensive markdown documentation
 
 ## License

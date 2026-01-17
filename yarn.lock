@@ -3,7 +3,7 @@
 
 __metadata:
   version: 8
-  cacheKey: 10c0
+  cacheKey: 10
 
 "@astrojs/compiler@npm:^2.13.0":
   version: 2.13.0
