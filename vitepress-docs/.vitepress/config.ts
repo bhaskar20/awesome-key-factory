@@ -10,7 +10,8 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Guides', link: '/guides/introduction' },
       { text: 'API Reference', link: '/api-reference/create-key-factory' },
-      { text: 'Examples', link: '/examples/react-query-setup' }
+      { text: 'Examples', link: '/examples/react-query-setup' },
+      { text: 'Blog', link: '/blog/managing-react-query-keys' }
     ],
     
     sidebar: [
@@ -65,6 +66,12 @@ export default defineConfig({
       {
         text: 'FAQ',
         link: '/faq'
+      },
+      {
+        text: 'Blog',
+        items: [
+          { text: 'Managing React Query Keys', link: '/blog/managing-react-query-keys' }
+        ]
       }
     ],
     
