@@ -1728,9 +1728,9 @@ astro-expressive-code@^0.41.1:
     rehype-expressive-code "^0.41.6"
 
 astro@^5.16.10:
-  version "5.16.10"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-5.16.10.tgz#db276f44cd74af4d13bfe2a4e2aa5b9177519b67"
-  integrity sha512-mBaRwFrqwCHiKDvvfNW2rRRkLAqnkj3lbkte6Vg4OzeUiDyEsdU4oOqTZxHJf/mxzZvBiU37BxG1oeh+tq1IUA==
+  version "5.16.11"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-5.16.11.tgz#e273708a5f1350d0b44ea9e486f63be284b5dd0f"
+  integrity sha512-Z7kvkTTT5n6Hn5lCm6T3WU6pkxx84Hn25dtQ6dR7ATrBGq9eVa8EuB/h1S8xvaoVyCMZnIESu99Z9RJfdLRLDA==
   dependencies:
     "@astrojs/compiler" "^2.13.0"
     "@astrojs/internal-helpers" "0.7.5"
@@ -1750,7 +1750,7 @@ astro@^5.16.10:
     cssesc "^3.0.0"
     debug "^4.4.3"
     deterministic-object-hash "^2.0.2"
-    devalue "^5.6.1"
+    devalue "^5.6.2"
     diff "^8.0.3"
     dlv "^1.1.3"
     dset "^3.1.4"
@@ -1882,9 +1882,9 @@ base-64@^1.0.0:
   integrity sha512-kwDPIFCGx0NZHog36dj+tHiwP4QMzsZ3AgMViUBKI0+V5n4U0ufTCUMhnQ04diaRI8EX/QcPfql7zlhZ7j4zgg==
 
 baseline-browser-mapping@^2.9.0:
-  version "2.9.14"
-  resolved "https://registry.yarnpkg.com/baseline-browser-mapping/-/baseline-browser-mapping-2.9.14.tgz#3b6af0bc032445bca04de58caa9a87cfe921cbb3"
-  integrity sha512-B0xUquLkiGLgHhpPBqvl7GWegWBUNuujQ6kXd/r1U38ElPT6Ok8KZ8e+FpUGEc2ZoRQUzq/aUnaKFc/svWUGSg==
+  version "2.9.15"
+  resolved "https://registry.yarnpkg.com/baseline-browser-mapping/-/baseline-browser-mapping-2.9.15.tgz#6baaa0069883f50a99cdb31b56646491f47c05d7"
+  integrity sha512-kX8h7K2srmDyYnXRIppo4AH/wYgzWVCs+eKr3RusRSQ5PvRYoEFmR/I0PbdTjKFAoKqp5+kbxnNTFO9jOfSVJg==
 
 bcp-47-match@^2.0.0:
   version "2.0.3"
@@ -2281,7 +2281,7 @@ deterministic-object-hash@^2.0.2:
   dependencies:
     base-64 "^1.0.0"
 
-devalue@^5.6.1:
+devalue@^5.6.2:
   version "5.6.2"
   resolved "https://registry.yarnpkg.com/devalue/-/devalue-5.6.2.tgz#931e2bb1cc2b299e0f0fb9e4e5be8ebf521a25b8"
   integrity sha512-nPRkjWzzDQlsejL1WVifk5rvcFi/y1onBRxjaFMjZeR9mFpqu2gmAZ9xUB9/IEanEP/vBtGeGganC/GO1fmufg==
@@ -2756,9 +2756,9 @@ fontace@~0.4.0:
     fontkitten "^1.0.0"
 
 fontkitten@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/fontkitten/-/fontkitten-1.0.1.tgz#85419e9fd0ec1f737beed0d1e78a4f91ac1480de"
-  integrity sha512-m+/cO+/kAU9farlejecXLgQH20+UXyH0K6oosGtogAz7BWco+KTYE60epKwMt8eVxqlOE2Fs+GoHVlGDUbKOoA==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/fontkitten/-/fontkitten-1.0.2.tgz#7f995d7e2b82f19917662064aa8a4d74d15f2292"
+  integrity sha512-piJxbLnkD9Xcyi7dWJRnqszEURixe7CrF/efBfbffe2DPyabmuIuqraruY8cXTs19QoM8VJzx47BDRVNXETM7Q==
   dependencies:
     tiny-inflate "^1.0.3"
 
