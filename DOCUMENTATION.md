@@ -1,4 +1,4 @@
-# React Query Key Factory - Complete Documentation
+# Awesome key factory - Complete Documentation
 
 ## Table of Contents
 
@@ -17,7 +17,7 @@
 
 ## Introduction
 
-`react-query-key-factory` is a type-safe utility library for managing React Query keys in TypeScript applications. It provides a structured, hierarchical approach to defining query keys with full type safety and autocomplete support.
+`awesome-key-factory` is a type-safe utility library for managing React Query keys in TypeScript applications. It provides a structured, hierarchical approach to defining query keys with full type safety and autocomplete support.
 
 ### Why Use This Library?
 
@@ -34,13 +34,13 @@
 ### Using Yarn (Recommended)
 
 ```bash
-yarn add react-query-key-factory
+yarn add awesome-key-factory
 ```
 
 ### Using npm
 
 ```bash
-npm install react-query-key-factory
+npm install awesome-key-factory
 ```
 
 ### Peer Dependencies
@@ -54,7 +54,7 @@ This library requires TypeScript version 4.0.0 or higher.
 ### Basic Setup
 
 ```typescript
-import { createKeyFactory } from 'react-query-key-factory';
+import { createKeyFactory } from 'awesome-key-factory';
 
 const queryKeys = createKeyFactory('app', {
   users: {
@@ -221,7 +221,7 @@ A factory object (`KeyFactory<Schema, BaseKey>`) where:
 ### Real-World React Query Setup
 
 ```typescript
-import { createKeyFactory } from 'react-query-key-factory';
+import { createKeyFactory } from 'awesome-key-factory';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
 // Define your key factory
@@ -402,7 +402,7 @@ Create a single file for all your query keys:
 
 ```typescript
 // src/lib/queryKeys.ts
-import { createKeyFactory } from 'react-query-key-factory';
+import { createKeyFactory } from 'awesome-key-factory';
 
 export const queryKeys = createKeyFactory('app', {
   // ... all your keys

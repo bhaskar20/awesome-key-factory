@@ -1,0 +1,45 @@
+---
+title: Basic Usage
+description: Learn the basics of using Awesome key factory.
+---
+
+## Simple Key with Function
+
+```typescript
+const keys = createKeyFactory('base', {
+  items: (params: {}) => ['list'],
+});
+
+keys.items({}) // => ['base', 'items', 'list']
+```
+
+## Nested Structure
+
+```typescript
+const keys = createKeyFactory('app', {
+  users: {
+    all: () => [],
+    detail: (params: { id: string }) => [params.id],
+  },
+});
+
+keys.users.all({}) // => ['app', 'users', 'all']
+keys.users.detail({ id: '123' }) // => ['app', 'users', 'detail', '123']
+keys.users() // => ['app', 'users'] (access intermediate level)
+```
+
+## Array Shorthand
+
+For static keys, you can use arrays instead of functions:
+
+```typescript
+const keys = createKeyFactory('shop', {
+  products: {
+    list: ['all'], // Equivalent to () => ['all']
+    featured: ['featured', 'items'],
+  },
+});
+
+keys.products.list() // => ['shop', 'products', 'list', 'all']
+keys.products.featured() // => ['shop', 'products', 'featured', 'featured', 'items']
+```

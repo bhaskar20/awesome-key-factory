@@ -1,4 +1,4 @@
-# react-query-key-factory
+# awesome-key-factory
 
 A type-safe key factory for managing react-query keys with full TypeScript support.
 
@@ -10,9 +10,9 @@ A type-safe key factory for managing react-query keys with full TypeScript suppo
 ## Installation
 
 ```bash
-yarn add react-query-key-factory
+yarn add awesome-key-factory
 # or
-npm install react-query-key-factory
+npm install awesome-key-factory
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ npm install react-query-key-factory
 ### Basic Example
 
 ```typescript
-import { createKeyFactory } from 'react-query-key-factory';
+import { createKeyFactory } from 'awesome-key-factory';
 
 const keys = createKeyFactory('baseKey', {
   a: (params: {}) => ['key1', 'key2'],

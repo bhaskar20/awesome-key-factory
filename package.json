@@ -1,5 +1,5 @@
 {
-  "name": "react-query-key-factory",
+  "name": "awesome-key-factory",
   "version": "1.0.0",
   "description": "A type-safe key factory for managing react-query keys",
   "main": "dist/index.js",
@@ -14,9 +14,9 @@
     "lint:fix": "eslint . --ext .ts --fix",
     "type-check": "tsc --noEmit",
     "check": "yarn type-check && yarn lint",
-    "docs:dev": "cd starlight-docs && yarn dev",
-    "docs:build": "cd starlight-docs && yarn build",
-    "docs:preview": "cd starlight-docs && yarn preview"
+    "docs:dev": "cd vitepress-docs && yarn dev",
+    "docs:build": "cd vitepress-docs && yarn build",
+    "docs:preview": "cd vitepress-docs && yarn preview"
   },
   "keywords": [
     "react-query",
@@ -30,7 +30,7 @@
     "type": "git",
     "url": "https://github.com/bhaskar20/awesome-key-factory.git"
   },
-  "homepage": "https://github.com/bhaskar20/awesome-key-factory#readme",
+  "homepage": "https://bhaskar20.github.io/awesome-key-factory/",
   "bugs": {
     "url": "https://github.com/bhaskar20/awesome-key-factory/issues"
   },

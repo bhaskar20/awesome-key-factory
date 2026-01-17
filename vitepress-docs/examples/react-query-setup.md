@@ -1,0 +1,86 @@
+---
+title: React Query Setup
+description: Real-world example of using Awesome key factory with React Query.
+---
+
+## Complete Setup
+
+```typescript
+import { createKeyFactory } from 'awesome-key-factory';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+
+// Define your key factory
+const queryKeys = createKeyFactory('app', {
+  users: {
+    all: () => [],
+    lists: () => ['list'],
+    detail: (params: { id: string }) => [params.id],
+    posts: (params: { userId: string }) => [params.userId, 'posts'],
+  },
+  posts: {
+    all: () => [],
+    detail: (params: { id: string }) => [params.id],
+    comments: (params: { postId: string }) => [params.postId, 'comments'],
+  },
+});
+```
+
+## Using in Components
+
+```typescript
+function UserDetail({ userId }: { userId: string }) {
+  const { data, isLoading } = useQuery({
+    queryKey: queryKeys.users.detail({ id: userId }),
+    queryFn: () => fetchUser(userId),
+  });
+
+  const { data: posts } = useQuery({
+    queryKey: queryKeys.users.posts({ userId }),
+    queryFn: () => fetchUserPosts(userId),
+  });
+
+  if (isLoading) return <div>Loading...</div>;
+  
+  return (
+    <div>
+      <h1>{data?.name}</h1>
+      {/* ... */}
+    </div>
+  );
+}
+```
+
+## Using in Mutations
+
+```typescript
+function useCreatePost() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: createPost,
+    onSuccess: (data) => {
+      // Invalidate related queries
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.posts.all({}),
+      });
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.users.posts({ userId: data.userId }),
+      });
+    },
+  });
+}
+```
+
+## Query Invalidation
+
+```typescript
+// Invalidate all user queries
+queryClient.invalidateQueries({
+  queryKey: queryKeys.users(),
+});
+
+// Invalidate specific user detail
+queryClient.invalidateQueries({
+  queryKey: queryKeys.users.detail({ id: '123' }),
+});
+```

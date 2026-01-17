@@ -1,0 +1,65 @@
+---
+title: API Versioning
+description: Using Awesome key factory with API versioning.
+---
+
+## Versioned API Keys
+
+```typescript
+const queryKeys = createKeyFactory('api', {
+  v1: {
+    users: {
+      all: () => [],
+      detail: (params: { id: string }) => [params.id],
+    },
+    posts: {
+      all: () => [],
+      detail: (params: { id: string }) => [params.id],
+    },
+  },
+  v2: {
+    users: {
+      all: () => [],
+      detail: (params: { id: string }) => [params.id],
+    },
+  },
+});
+```
+
+## Usage
+
+```typescript
+// Use version-specific keys
+function UserDetailV1({ userId }: { userId: string }) {
+  const { data } = useQuery({
+    queryKey: queryKeys.v1.users.detail({ id: userId }),
+    queryFn: () => fetchUserV1(userId),
+  });
+  // ...
+}
+
+function UserDetailV2({ userId }: { userId: string }) {
+  const { data } = useQuery({
+    queryKey: queryKeys.v2.users.detail({ id: userId }),
+    queryFn: () => fetchUserV2(userId),
+  });
+  // ...
+}
+```
+
+## Migration Strategy
+
+When migrating from v1 to v2:
+
+```typescript
+// Invalidate v1 queries
+queryClient.invalidateQueries({
+  queryKey: queryKeys.v1(),
+});
+
+// Use v2 for new queries
+useQuery({
+  queryKey: queryKeys.v2.users.detail({ id: userId }),
+  queryFn: () => fetchUserV2(userId),
+});
+```
