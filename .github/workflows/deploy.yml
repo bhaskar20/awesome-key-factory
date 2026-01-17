@@ -36,7 +36,9 @@ jobs:
         working-directory: ./starlight-docs
       
       - name: Build
-        run: yarn build
+        run: |
+          echo "GITHUB_REPOSITORY: $GITHUB_REPOSITORY"
+          yarn build
         working-directory: ./starlight-docs
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}

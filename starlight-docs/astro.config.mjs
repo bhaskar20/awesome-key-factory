@@ -2,17 +2,12 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
-// For GitHub Pages: The base path is automatically set based on repository name
+// For GitHub Pages: The base path must match the repository name
 export default defineConfig({
-  // Automatically set base path for GitHub Pages
-  // Format: /repository-name/
-  base: process.env.GITHUB_REPOSITORY 
-    ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/` 
-    : '/react-query-key-factory/',
+  // Base path for GitHub Pages (repository: awesome-key-factory)
+  base: '/awesome-key-factory/',
   // Site URL for GitHub Pages
-  site: process.env.GITHUB_REPOSITORY 
-    ? `https://${process.env.GITHUB_REPOSITORY.split('/')[0]}.github.io`
-    : 'https://yourusername.github.io',
+  site: 'https://bhaskar20.github.io',
   integrations: [
     starlight({
       title: 'React Query Key Factory',
